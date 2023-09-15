@@ -4,8 +4,6 @@ import { sendMail } from "@/mailService";
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req
 
-  console.log(req)
-
   try {
     switch (method) {
       case "POST": {

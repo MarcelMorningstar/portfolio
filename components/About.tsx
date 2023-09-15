@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react'
 import useWindowSize from '@/hooks/useWindowSize'
-import Image from 'next/image'
 import Layout from './Layout'
 import { motion } from 'framer-motion'
 import styles from '../styles/About.module.css'

@@ -1,9 +1,11 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
+import Image from 'next/image'
 import Layout from './Layout'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { HiPhone, HiMail } from "react-icons/hi"
+import confetti from "@/assets/confetti.gif"
 import styles from '../styles/Contact.module.css'
 import { PageInfo } from '@/typings';
 
@@ -19,15 +21,20 @@ type Props = {
 }
 
 export default function Contact({ pageInfo }: Props) {
+  const [result, setResult] = useState<{ ok: boolean, message: string } | null>(null)
   const { register, handleSubmit } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = data => {
-    fetch('/api/sendmail', {
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const response = fetch('/api/sendmail', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-    });
+    })
+
+    const dataBack = (await response).json()
+    
+    dataBack.then(value => { setResult({ ok: value.ok, message: value.message }) })
   }
 
   return (
@@ -47,12 +54,25 @@ export default function Contact({ pageInfo }: Props) {
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-          <input {...register('name')} type="text" placeholder='Name' className={styles.input} />
-          <input {...register('email')} type="email" placeholder='Email' className={styles.input} />
-          <input {...register('subject')} type="text" placeholder='Subject' className={styles.input2} />
-          <textarea {...register('message')} placeholder='Message' rows={3} className={styles.textarea}></textarea>
+          <input {...register('name')} type="text" placeholder='Name' required className={styles.input} />
+          <input {...register('email')} type="email" placeholder='Email' required className={styles.input} />
+          <input {...register('subject')} type="text" placeholder='Subject' required className={styles.input2} />
+          <textarea {...register('message')} placeholder='Message' required rows={3} className={styles.textarea}></textarea>
 
-          <button type='submit' className={styles.btn}>Send</button>
+          {
+            result ? (
+              <div className='relative px-5 xl:px-10 py-3 xl:py-5 flex' style={{ gridColumn: '1 / 3' }}>
+                {
+                  result.ok && (
+                    <Image src={confetti} width={320} height={320} className='absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' alt="contact me success" />
+                  )
+                }
+                <span className='relative z-20 w-full text-center text-lg text-text'>{ result.message }</span>
+              </div>
+            ) : (
+              <button type='submit' className="px-5 xl:px-10 py-3 xl:py-5 text-lg font-bold text-background bg-primary hover:bg-primary/90 active:bg-primary/70 rounded-md" style={{ gridColumn: '1 / 3' }}>Send</button>
+            )
+          }
         </form>
       </div>
     </Layout>

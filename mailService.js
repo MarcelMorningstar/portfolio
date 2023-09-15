@@ -16,7 +16,7 @@ export async function sendMail(name, email, subject, messege) {
         html: `
             <h1>Roland's Portfolio</h1>
 
-            <p>${ messege }<p>
+            <p>${ messege }</p>
 
             <span>${ name }, ${ email }</span>
         `,

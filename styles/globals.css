@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #D65A31;
+  --secondary: #ECDBBA;
+  --background: #242424;
+  --foreground: grey;
+  --text: white;
+  --transition: all .4s linear;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+  background-color: var(--background);
+}
+
+/* a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+} */

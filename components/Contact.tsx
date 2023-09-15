@@ -20,7 +20,15 @@ type Props = {
 
 export default function Contact({ pageInfo }: Props) {
   const { register, handleSubmit } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = data => {
+    fetch('/api/sendmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+  }
 
   return (
     <Layout title='contact'>

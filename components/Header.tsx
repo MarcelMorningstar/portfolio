@@ -29,7 +29,7 @@ export default function Header({}: Props) {
           duration: 1.2
         }}
       >
-        <Link href='https://github.com/marcelmorningstar' target='_blank' className={styles.link}>
+        <Link href='https://www.linkedin.com/in/rolands-bluks-423994191/' target='_blank' className={styles.link}>
           <AiFillLinkedin />
         </Link>
         <Link href='https://github.com/marcelmorningstar' target='_blank' className={styles.link}>

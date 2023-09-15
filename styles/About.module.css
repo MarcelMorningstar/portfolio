@@ -2,8 +2,6 @@
   width: min(42vh, min(80vw, 360px));
   height: min(46vh, min(92vw, 470px));
   display: grid;
-  /* grid-template-columns: 40px 90px 100px 50px 20px 30px 10px; */
-  /* grid-template-rows: 10px 40px 40px 50px 30px 25px 50px 10px 20px 60px 30px 15px 20px; */
   grid-template-columns: 4fr 9fr 10fr 5fr 2fr 3fr 1fr;
   grid-template-rows: 1fr 4fr 4fr 5fr 3fr 2.5fr 5fr 1fr 2fr 6fr 3fr 1.5fr 2fr;
   grid-template-areas: 

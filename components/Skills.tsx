@@ -5,10 +5,14 @@ import Image from 'next/image'
 import Layout from './Layout'
 import { motion } from 'framer-motion'
 import styles from '../styles/Skills.module.css'
+import { urlFor } from '@/sanity'
+import { Skill } from '@/typings'
 
-type Props = {}
+type Props = {
+  skills: Skill[]
+}
 
-export default function Skills({}: Props) {
+export default function Skills({ skills }: Props) {
   const container = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
@@ -40,7 +44,7 @@ export default function Skills({}: Props) {
           once: true
         }}
       > 
-        {/* {
+        {
           skills?.map(skill => {
             return (
               <motion.div 
@@ -52,7 +56,7 @@ export default function Skills({}: Props) {
                   className={styles.skillImage + ' rounded-full border border-foreground object-cover p-2 filter group-hover:grayscale transition duration-500 ease-in-out'}
                   width={128}
                   height={128}
-                  src={skill.image}
+                  src={urlFor(skill.image).url()}
                   alt=''
                 />
                 <div className={styles.skillHover + ' absolute rounded-full opacity-0 group-hover:opacity-70 transition duration-300 ease-in-out group-hover:bg-white'}>
@@ -63,7 +67,7 @@ export default function Skills({}: Props) {
               </motion.div>
             )
           })
-        } */}
+        }
       </motion.div>
     </Layout>
   )

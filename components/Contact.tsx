@@ -21,6 +21,7 @@ type Props = {
 }
 
 export default function Contact({ pageInfo }: Props) {
+  const [loading, setLoading] = useState<boolean>(false)
   const [result, setResult] = useState<{ ok: boolean, message: string } | null>(null)
   const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -32,9 +33,12 @@ export default function Contact({ pageInfo }: Props) {
       body: JSON.stringify(data),
     })
 
+    setLoading(true)
+
     const dataBack = (await response).json()
-    
     dataBack.then(value => { setResult({ ok: value.ok, message: value.message }) })
+
+    setLoading(false)
   }
 
   return (
@@ -61,7 +65,7 @@ export default function Contact({ pageInfo }: Props) {
 
           {
             result ? (
-              <div className='relative px-5 xl:px-10 py-3 xl:py-5 flex' style={{ gridColumn: '1 / 3' }}>
+              <div className='relative flex items-center justify-center h-12' style={{ gridColumn: '1 / 3' }}>
                 {
                   result.ok && (
                     <Image src={confetti} width={320} height={320} className='absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' alt="contact me success" />
@@ -69,8 +73,12 @@ export default function Contact({ pageInfo }: Props) {
                 }
                 <span className='relative z-20 w-full text-center text-lg text-text'>{ result.message }</span>
               </div>
+            ) : loading ? (
+              <div className='relative flex items-center justify-center h-12' style={{ gridColumn: '1 / 3' }}>
+                <div className={styles.loader}></div>
+              </div>
             ) : (
-              <button type='submit' className="px-5 xl:px-10 py-3 xl:py-5 text-lg font-bold text-background bg-primary hover:bg-primary/90 active:bg-primary/70 rounded-md" style={{ gridColumn: '1 / 3' }}>Send</button>
+              <button type='submit' className="flex items-center justify-center h-12 text-lg font-bold text-background bg-primary hover:bg-primary/90 active:bg-primary/70 rounded-md" style={{ gridColumn: '1 / 3' }}>Send</button>
             )
           }
         </form>

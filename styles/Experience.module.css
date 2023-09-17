@@ -2,7 +2,7 @@
   @apply grid snap-center flex-shrink-0 bg-[#292929] p-7 xs:p-10 opacity-70 hover:opacity-100 transition-opacity duration-200 rounded-lg cursor-pointer;
   grid-template-rows: 128px 76px 104px auto;
   width: min(80vw, 500px);
-  height: 70dvh;
+  height: 72dvh;
 }
 
 @media screen and (max-width: 1279px) {

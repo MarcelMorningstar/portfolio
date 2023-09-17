@@ -9,7 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       await sendMail(body.name, body.email, body.subject, body.message);
       res.status(200).json({ ok: true, message: "Thank you for getting in touch!" });
     } else {
-      res.status(400).json({ ok: false, message: "Oops! Something went Wrong" });
+      res.status(400).json({ ok: false, message: "Oops! Something went Wrong." });
     }
   } catch (err: any) {
     res.status(400).json({

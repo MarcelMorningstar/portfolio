@@ -18,6 +18,7 @@
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-body {
+html, body {
+  overflow: hidden;
   background-color: var(--background);
 }

@@ -40,9 +40,9 @@ export default function ExperienceCard({ experience }: Props) {
         />
       </motion.div>
       
-      <div>
-        <h4 className='text-center text-3xl 2xs:text-4xl font-light text-text'>{ experience.jobTitle }</h4>
-        <p className='text-center text-xl 2xs:text-2xl font-bold mt-1 text-text'>{ experience.company }</p>
+      <div className='flex flex-col'>
+        <span className='text-center text-3xl 2xs:text-4xl font-light text-text'>{ experience.jobTitle }</span>
+        <span className='text-center text-xl 2xs:text-2xl font-bold mt-1 text-text'>{ experience.company }</span>
       </div>
 
       <div>

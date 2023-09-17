@@ -39,9 +39,9 @@ export default function Hero({ pageInfo }: Props) {
       />
 
       <div className='relative flex flex-col items-center max-w-[90vw]'>
-        <h2 className='text-xs sm:text-sm uppercase text-foreground pb-2 tracking-[12px] transition-all'>WEB DEVELOPER</h2>
+        <h2 className='text-xs sm:text-sm uppercase text-foreground pb-2 tracking-[8px] sm:tracking-[12px] transition-all'>WEB DEVELOPER</h2>
 
-        <h1 className='px-10 text-4xl md:text-5xl lg:text-6xltext-text font-semibold text-text transition-all'>
+        <h1 className='px-10 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-text transition-all'>
           <span>{text}</span>
           <Cursor cursorColor='var(--primary)' />
         </h1>

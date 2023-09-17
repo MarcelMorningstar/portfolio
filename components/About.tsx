@@ -33,7 +33,7 @@ export default function About({ pageInfo }: Props) {
 
   return (
     <Layout title='about'>
-      <div className="flex flex-col items-center md:flex-row md:justify-center gap-6 sm:gap-8">
+      <div className="flex flex-col items-center md:flex-row md:justify-center gap-8 md:gap-16">
         <div id='imageContainer' className={styles.imageContainer} >
           <motion.div 
             className={styles.a} 
@@ -225,8 +225,7 @@ export default function About({ pageInfo }: Props) {
         </div>
         <div className={styles.textContainer}>
           <h4 className='text-center text-2xl 2xs:text-3xl xs:text-4xl font-semibold text-text'>My <span className='underline decoration-primary'>Story</span></h4>
-          <p className='text-center text-xs 3xs:text-sm xs:text-base text-text'>{ pageInfo.myStory }</p>
-          {/* <Image src={urlFor(pageInfo?.aboutPicture).url()} width={200} height={200} alt='' />   */}
+          <pre className='text-center text-text whitespace-pre-wrap' style={{ fontFamily: 'inherit', fontSize: 'clamp(0.84375rem, 0.6875rem + 0.8333vw, 1rem)', lineHeight: 'clamp(0.875rem, 0.7188rem + 0.8333vw, 1.03125rem)' }}>{ pageInfo.myStory }</pre>
         </div>
       </div>
     </Layout>

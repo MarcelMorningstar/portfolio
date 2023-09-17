@@ -31,7 +31,6 @@
 
 .textarea::-webkit-scrollbar-thumb {
   background: rgba(236, 219, 186, 60);
-  border-radius: 9999px;
   border: 3px transparent solid;
   background-clip: padding-box;
 }
